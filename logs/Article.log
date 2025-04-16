@@ -1,2 +1,1 @@
-{"level":50,"route":"/create-article","/create-article":{"statusCode":-1,"message":"fetch failed","testStatus":false}}
-{"level":50,"route":"/create-article","/create-article":{"statusCode":-1,"message":"fetch failed","testStatus":false}}
+{"level":50,"route":"/documents/:documentId","/documents/:documentId":{"statusCode":-1,"message":"expected undefined to be false // Object.is equality","testStatus":false}}

@@ -21,7 +21,7 @@ export const createErrorMessage = (result: any, resStatus: number) => {
   };
   
 
-export const DoocumentTestData={
+export const DocumentTestData={
    createDocumentwithValidData:{
     metadata: {
       title: "Impact on job from Ai revolution",
@@ -41,5 +41,19 @@ export const DoocumentTestData={
     }
 
    }
+  ,
+   updateDocumentwithValidData:{
+    documentId:10,
+    content:"testing content to be updated 2"
  
+}
+,
+updateDocumentwithInValidData:{
+    documentId:10,
+    content:""
+}
+,
+updateDocumentwithOutDocumentId:{
+    content:"testing content to be updated 2"
+}
 }
