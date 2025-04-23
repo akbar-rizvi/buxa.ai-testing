@@ -26,36 +26,122 @@ export const createErrorMessage = (result: any, resStatus: number) => {
 
 export const DocumentTestData={
    createDocumentwithValidData:{
-    metadata: {
-      title: "Impact on job from Ai revolution",
-      researchLevel: 3,
-      personality: ["professional", "insightful"],
-      tone: "Informative",
-      language: "English",
-      useCase: "Educational article"
-    }
-   }
-,
-   createDocumentwithInValidData:{
-    metadata: {
-      researchLevel: 2,
-      personality: ["funny"],
-      tone: "Casual",
-    }
+                  metadata: {
+                    title: "Impact on job from Ai revolution",
+                    researchLevel: 3,
+                    personality: ["professional", "insightful"],
+                    tone: "Informative",
+                    language: "English",
+                    useCase: "Educational article",
+                    deepDive:false
+                  }
+                }
+              ,
+              createDocumentwithValidDataforDeepdive:{
+                metadata: {
+                  title: "Impact on job from Ai revolution",
+                  researchLevel: 3,
+                  personality: ["professional", "insightful"],
+                  tone: "Informative",
+                  language: "English",
+                  useCase: "Educational article",
+                  deepDive:false
+                }
+              }
+            ,
 
-   }
+
+
+              missingData:{
+
+              },
+
+            missingTitle:{
+              metadata: {
+                
+                researchLevel: 3,
+                personality: ["professional", "insightful"],
+                tone: "Informative",
+                language: "English",
+                useCase: "Educational article"
+              }
+              
+            },
+
+            missingPersonality:{
+              metadata: {
+                title: "Impact on job from Ai revolution",
+                researchLevel: 3,
+               
+                tone: "Informative",
+                language: "English",
+                useCase: "Educational article"
+              }
+            },
+
+          missingPersonalityString:{
+              metadata: {
+                title: "Impact on job from Ai revolution",
+                researchLevel: 3,
+                personality: "professional",
+                tone: "Informative",
+                language: "English",
+                useCase: "Educational article"
+              }
+              
+            },
+
+            EmptyArrayPersonality:{
+              metadata: {
+                title: "Impact on job from Ai revolution",
+                researchLevel: 3,
+                personality: [],
+                tone: "Informative",
+                language: "English",
+                useCase: "Educational article"
+              }
+            },
+            missingDeepdive:{
+              metadata: {
+                title: "Impact on job from Ai revolution",
+                researchLevel: 3,
+                personality: ["professional", "insightful"],
+                tone: "Informative",
+                language: "English",
+                useCase: "Educational article"
+              }
+            },
+
+          createDocumentwithInValidData:{
+            metadata: {
+              researchLevel: 2,
+              personality: ["funny"],
+              tone: "Casual",
+            }
+
+          }
   ,
-   updateDocumentwithValidData:{
-    documentId:10,
-    content:"testing content to be updated 2"
- 
-}
-,
-updateDocumentwithInValidData:{
-    documentId:10,
-    content:""
-}
-,
+          updateDocumentwithValidData:{
+            documentId:10,
+            content:"testing content to be updated 2"
+        
+        }
+        ,
+
+          updateDocumentwithInValidData:{
+              documentId:10,
+              content:""
+          }
+          ,
+          updateDocumentwithOutContent:{
+            content:""
+
+          },
+          updateDocumentwithInvalidId:{
+            content:"testing content to be updated 2",
+            documentId:"TESTING"
+          },
+
 updateDocumentwithOutDocumentId:{
     content:"testing content to be updated 2"
 }
