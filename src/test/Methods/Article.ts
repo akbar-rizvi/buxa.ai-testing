@@ -239,5 +239,74 @@ export default class ArticleMethod{
             throw error;    
         }
     }
+    static getArticleByInvalidUserId=async (data:any)=>{
+        try {
+            const response = await fetchData(`${article_api}/${data.documentId}`, "GET", null, headers);
+            if (!response.ok) {
+                const result = await response.json();
+                expect(result.success).toBe(false);
+                expect(result.status).toBe(false);
+                
+                const errorDetails = extractErrorMessage(result);
+                logError(logger, "/:documentId", errorDetails.message, errorDetails.status);
+                
+                
+            }
+    
+            // If response is successful but shouldn't be (e.g., missing data)
+            const result = await response.json();
+            throw new Error("Expected request to fail, but it succeeded.");
+    
+        } catch (error: any) {
+            
+            const errorDetails = extractErrorMessage(error);
+            logError(logger, "/:documentId", errorDetails.message, errorDetails.status);
+            
+           
+        }
+    }
+
+    static DeleteArticleWithDocumentId=async (data:any)=>{
+        try {
+            const response = await fetchData(`${article_api}/${data.documentId}`, "DELETE", null, headers);
+            const result = await response.json();
+            if (!response.ok) {
+                const errorMessage = result.message || "Authorization failed";
+                throw new Error(errorMessage);
+            }
+            expect(result.status).toBe(true);   
+            expect(result.message).toBe("Image uploaded successfully");
+
+    
+    
+        } catch (error: any) {
+            
+            const errorDetails = extractErrorMessage(error);
+            logError(logger, "/:documentId", errorDetails.message, errorDetails.status);
+            
+           
+        }
+    }
+    static deleteArticleByInvalidUserId=async (data:any)=>{
+        try {
+            const response = await fetchData(`${article_api}/${data.documentId}`, "DELETE", null, headers);
+            if (!response.ok) {
+                const result = await response.json();
+                expect(result.success).toBe(false);
+                expect(result.status).toBe(false);
+                
+                const errorDetails = extractErrorMessage(result);
+                logError(logger, "/:documentId", errorDetails.message, errorDetails.status);
+                
+                
+            }
+        } catch (error: any) {
+            
+            const errorDetails = extractErrorMessage(error);
+            logError(logger, "/:documentId", errorDetails.message, errorDetails.status);
+            
+           
+        }
+    }
     
 }

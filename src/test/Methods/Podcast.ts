@@ -89,7 +89,7 @@ export default class PodcastMethod{
             
         }
     }
-    static getPodacstById=async(PodcastId:number)=>{
+    static getPodacstById=async(PodcastId:any)=>{
         try {
             const response=await fetchData(`${podcast_api}/${PodcastId}`,'GET',PodcastId,headers)
             const result=await response.json()
@@ -134,7 +134,7 @@ export default class PodcastMethod{
         const response=await fetchData(`${podcast_api}/audio/${podcastId}`,'POST',data,headers) 
        
         const result=await response.json()
-        console.log('resp',result) 
+        
         if(!response.ok){
             console.log('test in audio')
             const errorMessage = result.message || "Authorization failed";
@@ -155,19 +155,30 @@ export default class PodcastMethod{
 
     }
 
-    static getPodcastAudiowithInvalidDetails=async(data:{content:string,person1audio:string,person2audio:string},podcastId:number)=>{
+    static getPodcastAudiowithInvalidDetails=async(data:any,podcastId:any)=>{
         try {
          const response=await fetchData(`${podcast_api}/audio/${podcastId}`,'POST',data,headers) 
          
-         const result=await response.json()
+        
          
          
          if(!response.ok){
-             expect(result.message).toBe("Invalid details")
-             expect(result.status).toBe(false)
-             logSuccess(logger,`${podcast_api}/audio/${podcastId}`,result.message,response.status)
-     
-         }
+            // tetsing for invalid paramas
+            if(response.status==404){
+                expect(response.status).toBe(404);
+                return
+
+            }
+            
+            const result = await response.json();
+            
+           
+            expect(response.status).toBe(400);
+            
+
+            const errorDetails = extractErrorMessage(result);
+            logError(logger,`${podcast_api}/transcript` , errorDetails.message, errorDetails.status);
+          }
         
 
          

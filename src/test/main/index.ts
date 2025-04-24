@@ -1,5 +1,5 @@
 import ArticleTest from "./article";
-import CarousalTest from "./casrousal";
+import CarousalTest from "./carousal";
 import PodcastTest from "./podcast";
 
 
